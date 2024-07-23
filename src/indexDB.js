@@ -89,7 +89,7 @@ witDB.againDB = (againDBName, againVersion) => { //重新打开DB
 
 witDB.setDB = async (data, keyName, thisStoreName) => { //新增/更改数据
     if (keyName === undefined || keyName === null) {
-        return throw new Error(`keyName不能为${keyName}`)
+        return console.error(`keyName不能为${keyName}`)
     }
     witDB.storeName = thisStoreName ? thisStoreName : witDB.storeName
     let isOpen
@@ -118,7 +118,7 @@ witDB.setDB = async (data, keyName, thisStoreName) => { //新增/更改数据
 
 witDB.getDB = async (keyName, thisStoreName) => { //查找数据
     if (keyName === undefined || keyName === null) {
-        return throw new Error(`keyName不能为${keyName}`)
+        return console.error(`keyName不能为${keyName}`)
     }
     witDB.storeName = thisStoreName ? thisStoreName : witDB.storeName
     let isOpen
@@ -146,7 +146,7 @@ witDB.getDB = async (keyName, thisStoreName) => { //查找数据
 
 witDB.delDB = async (keyName, thisStoreName) => { //删除数据
     if (keyName === undefined || keyName === null) {
-        return throw new Error(`keyName不能为${keyName}`)
+        return console.error(`keyName不能为${keyName}`)
     }
     witDB.storeName = thisStoreName ? thisStoreName : witDB.storeName
     let isOpen

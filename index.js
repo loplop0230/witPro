@@ -13,6 +13,7 @@ import {
     validatePhoneNum
 } from './src/tool.js'
 import witDB from './src/indexDB'
+import incrementCounter from "./src/incrementCounter";
 export {
     readFile,
     validateNum,
@@ -26,5 +27,6 @@ export {
     validatePhoneNum,
     secondConversion,
     scrollToSelected,
+    incrementCounter,
     witDB
 }

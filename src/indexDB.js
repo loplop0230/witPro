@@ -16,17 +16,6 @@ let witDB = {
     getDB: null,
     delDB: null
 };
-(function () { //默认创建数据库default - defaultStore
-    witDB.indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.OIndexedDB ||
-        window
-            .msIndexedDB,
-        IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.OIDBTransaction ||
-            window
-                .msIDBTransaction;
-    if (!witDB.db) {
-        witDB.openDB(witDB.dbName, witDB.storeName, witDB.dbVersion)
-    }
-})();
 
 witDB.deleteDB = (dbName) => {
     let req = witDB.indexedDB.deleteDatabase(dbName);
@@ -171,5 +160,15 @@ witDB.delDB = async (keyName, thisStoreName) => { //删除数据
         }
     })
 }
-
+(function () { //默认创建数据库default - defaultStore
+    witDB.indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.OIndexedDB ||
+        window
+            .msIndexedDB,
+        IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.OIDBTransaction ||
+            window
+                .msIDBTransaction;
+    if (!witDB.db) {
+        witDB.openDB(witDB.dbName, witDB.storeName, witDB.dbVersion)
+    }
+})();
 export default witDB

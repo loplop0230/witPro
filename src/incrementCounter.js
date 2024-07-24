@@ -1,4 +1,4 @@
-let numArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], //数字规则
+let numArray = ['.', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9], //数字规则
     creatDig, //第一层div
     creatChildren, //第二层div
     numChildren, //第三层数字[0,1,2,3,4,5,6,7,8,9]dom
@@ -10,6 +10,9 @@ let numArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], //数字规则
     }
 export default function incrementCounter(obj) {
     const {number, el, speed} = {...option, ...obj}
+    if (isNaN(number * 1)) {
+        throw new Error('number of an object is not a Number type');
+    }
     try {
         let numberBox = document.querySelector(el) //获取到的dom盒子
         const numberLength = number.toString().split('')
@@ -58,8 +61,13 @@ export default function incrementCounter(obj) {
                     await handleCreated(numberBox)
                 }
                 let targetDom = Array.from(numberBox.children[i].children).find((i) => i.className === 'w-warp')
-                targetDom.style.transform = `translateY(-${topHeight * (numberLength[i] * 1 + 1)}px)`
+                if (!isNaN(numberLength[i] * 1)) {
+                    targetDom.style.transform = `translateY(-${topHeight * (numberLength[i] * 1 + 2)}px)`
+                } else {
+                    targetDom.style.transform = `translateY(-${topHeight}px)`
+                }
                 targetDom.style.transition = `all ${speed} cubic-bezier(0.65, 0.05, 0.36, 1) 0s`
+
             }
         })()
     } catch (err) {
